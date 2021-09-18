@@ -7,6 +7,9 @@ Resources:
 Google Sheets API · Key Concepts
 https://developers.google.com/sheets/api/guides/concepts
 
+Google Sheets API · Get Values
+https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/get
+
 Google Sheets API · Reading & Writing Cells
 https://developers.google.com/sheets/api/guides/values#javascript
 
@@ -18,5 +21,3 @@ https://developers.google.com/workspace/guides/create-credentials
 
 Google APIs · Using OAUTH 2.0
 https://developers.google.com/identity/protocols/oauth2/web-server
-
-
