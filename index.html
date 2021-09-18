@@ -28,18 +28,18 @@
       request.then(function(response) {
         console.log(response.result);
         var range = response.result;
-        debugger;
           if (range.values.length > 0) {
             appendPre('Title, Author:');
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
               // Print columns C and D, which correspond to indices 2 and 3.
-              appendPre(row[2] + ', ' + row[3]);
+              appendPre(row[0] + ', ' + row[1]);
             }
           } else {
             appendPre('No data found.');
           }
       }, function(reason) {
+        appendPre(JSON.stringify(error, null, 2));
         console.error('error: ' + reason.result.error.message);
       });
     }
@@ -84,12 +84,28 @@
     function handleSignOutClick(event) {
       gapi.auth2.getAuthInstance().signOut();
     }
+
+    /**
+     * Append a pre element to the body containing the given message
+     * as its text node. Used to display the results of the API call.
+     *
+     * @param {string} message Text to be placed in pre element.
+     */
+    function appendPre(message) {
+        var pre = document.getElementById('content');
+        var textContent = document.createTextNode(message + '\n');
+        pre.appendChild(textContent);
+    }
+
     </script>
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
+
     <button id="signin-button" onclick="handleSignInClick()">Sign in</button>
     <button id="signout-button" onclick="handleSignOutClick()">Sign out</button>
+
+    <pre id="content" style="white-space: pre-wrap;"></pre>
   </body>
 </html>
